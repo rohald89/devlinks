@@ -49,7 +49,7 @@ const page: FC<pageProps> = ({}) => {
         Create new account
       </Button>
 
-      <p className="text-center text-gray-500 mt-6 flex flex-col">
+      <p className="text-center text-gray-500 mt-6 flex flex-col xl:flex-row xl:gap-1 xl:justify-center">
         Already have an account?
         <span className="text-primary-600">
           <Link href="/signin" className="text-center">

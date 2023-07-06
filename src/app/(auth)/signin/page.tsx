@@ -34,7 +34,7 @@ const page: FC<pageProps> = ({}) => {
       <Button className="w-full" variant="primary" type="submit">
         Login
       </Button>
-      <p className="text-center text-gray-500 mt-6 flex flex-col">
+      <p className="text-center text-gray-500 mt-6 flex flex-col xl:flex-row xl:gap-1 xl:justify-center">
         Don't have an account?
         <span className="text-primary-600">
           <Link href="/signup" className="text-center">

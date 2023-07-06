@@ -61,7 +61,7 @@ module.exports = {
         foreground: 'hsl(var(--foreground))',
       },
       boxShadow: {
-        button: '0px 0px 32px 0px rgba(99, 60, 255, 0.25)',
+        active: '0px 0px 32px 0px rgba(99, 60, 255, 0.25)',
       },
       keyframes: {
         'accordion-down': {
