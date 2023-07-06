@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
+import Link from 'next/link';
 import { FC } from 'react';
 
 interface pageProps {}
@@ -33,6 +34,14 @@ const page: FC<pageProps> = ({}) => {
       <Button className="w-full" variant="primary" type="submit">
         Login
       </Button>
+      <p className="text-center text-gray-500 mt-6 flex flex-col">
+        Don't have an account?
+        <span className="text-primary-600">
+          <Link href="/signup" className="text-center">
+            Create account
+          </Link>
+        </span>
+      </p>
     </form>
   );
 };
