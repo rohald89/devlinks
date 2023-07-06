@@ -1,18 +1,9 @@
-import { Button } from '@/components/ui/Button';
-
 export default function Home() {
   return (
     <>
-      <Button>Default</Button>
-      <Button disabled>Disabled</Button>
-      <Button isLoading>Loading</Button>
-      <Button variant="outline">Preview</Button>
-      <Button variant="outline" disabled>
-        Preview
-      </Button>
-      <Button variant="outline" isLoading>
-        Loading
-      </Button>
+      <h1 className="text-2xl font-bold text-center md:text-heading-md">
+        One day, I will be a beautiful landing page 🚀
+      </h1>
     </>
   );
 }
