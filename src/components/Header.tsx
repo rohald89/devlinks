@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { TabsContent, TabsList, TabsTrigger } from './ui/Tabs';
-import { Icons } from './Icons';
-import { Button } from './ui/Button';
+import { TabsList, TabsTrigger } from '@/components/ui/Tabs';
+import { Icons } from '@/components/Icons';
+import { Button } from '@/components/ui/Button';
 
 interface HeaderProps {}
 

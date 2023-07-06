@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import { TabsContent } from './ui/Tabs';
-import { Button } from './ui/Button';
-import GetStarted from './GetStarted';
+import { TabsContent } from '@/components/ui/Tabs';
+import { Button } from '@/components/ui/Button';
+import GetStarted from '@/components/GetStarted';
+import Preview from './Preview';
 
 interface DashboardProps {}
 
 const Dashboard: FC<DashboardProps> = ({}) => {
   return (
-    <>
+    <div className="m-6 flex gap-6">
+      <Preview />
       <TabsContent value="links">
         <div className="border-b border-gray-300 p-6">
           <h1 className="text-2xl font-bold md:text-heading-md">
@@ -31,7 +33,7 @@ const Dashboard: FC<DashboardProps> = ({}) => {
         </div>
       </TabsContent>
       <TabsContent value="profile">Profile</TabsContent>
-    </>
+    </div>
   );
 };
 
