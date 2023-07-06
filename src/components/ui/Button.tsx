@@ -11,9 +11,10 @@ const buttonVariants = cva(
         primary: 'bg-primary-600 text-white hover:bg-primary-300',
         outline:
           'bg-transparent text-primary-600 ring-1 ring-primary-600 hover:bg-primary-100',
+        ghost: 'bg-transparent text-primary-600 hover:bg-primary-100',
       },
       size: {
-        default: 'py-3 px-7',
+        default: 'py-[11px] px-7',
       },
     },
     defaultVariants: {
