@@ -7,23 +7,34 @@ interface HeaderProps {}
 
 const Header: FC<HeaderProps> = ({}) => {
   return (
-    <header className="bg-white rounded-b-xl p-4 flex items-center justify-between">
-      <Icons.logo width={32} height={32} />
+    <header className="bg-white rounded-b-xl p-4 flex items-center justify-between md:m-6 rounded-xl">
+      <span className="md:hidden">
+        <Icons.smallLogo />
+      </span>
+      <span className="hidden md:block">
+        <Icons.logo width={136} height={32} />
+      </span>
       <TabsList>
         <TabsTrigger value="links" asChild>
           <Button variant="ghost">
-            <Icons.link width={20} height={20}></Icons.link>
+            <Icons.link></Icons.link>
+            <span className="hidden text-heading-sm md:block">Links</span>
           </Button>
         </TabsTrigger>
         <TabsTrigger value="profile" asChild>
           <Button variant="ghost">
-            <Icons.user width={20} height={20}></Icons.user>
+            <Icons.user></Icons.user>
+            <span className="hidden text-heading-sm md:block">
+              Profile Details
+            </span>
           </Button>
         </TabsTrigger>
       </TabsList>
-      <Button className="px-4" variant="outline">
-        <Icons.preview width={20} height={20} />
-        <p className="sr-only">Show preview</p>
+      <Button className="px-4 md:px-7" variant="outline">
+        <span className="md:hidden">
+          <Icons.preview />
+        </span>
+        <span className="hidden md:block">Preview</span>
       </Button>
     </header>
   );
