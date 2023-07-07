@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import { useMutation } from '@tanstack/react-query';
-import { SignUpRequest, SignUpValidator } from '@/lib/validators/user';
+import { SignUpRequest, SignUpValidator } from '@/lib/validators/auth';
 import axios, { AxiosError } from 'axios';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -37,7 +37,7 @@ const SignUp: FC<SignUpProps> = ({}) => {
         confirmPassword,
       };
 
-      const { data } = await axios.post(`/api/register`, payload);
+      const { data } = await axios.post(`/api/signup`, payload);
       return data;
     },
     onError: (err) => {

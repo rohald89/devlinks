@@ -6,7 +6,7 @@ import { Input } from './ui/Input';
 import { Label } from './ui/Label';
 import { signIn } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { SignInRequest, SignInValidator } from '@/lib/validators/user';
+import { SignInRequest, SignInValidator } from '@/lib/validators/auth';
 import { useForm } from 'react-hook-form';
 
 interface SignInProps {}
@@ -23,8 +23,6 @@ const SignIn: FC<SignInProps> = ({}) => {
       password: '',
     },
   });
-
-  console.log(errors);
 
   const onSubmit = async (data: SignInRequest) => {
     const { email, password } = data;

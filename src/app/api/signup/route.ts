@@ -1,12 +1,12 @@
 import { db } from '@/lib/db';
-import { UserValidator } from '@/lib/validators/user';
+import { SignUpValidator } from '@/lib/validators/auth';
 import { hash } from 'bcrypt';
 import { z } from 'zod';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, password } = UserValidator.parse(body);
+    const { email, password } = SignUpValidator.parse(body);
     const hashed = await hash(password, 12);
 
     const emailTaken = await db.user.findFirst({
