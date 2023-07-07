@@ -26,7 +26,8 @@ const Dashboard: FC<DashboardProps> = ({}) => {
             + Add new Link
           </Button>
           {/* TODO Render all created link forms */}
-          {/* TODO Render GetStarted when no links are created */}
+
+          {/* When no links are found show GetStarted */}
           <GetStarted />
         </div>
         <div className="p-4">

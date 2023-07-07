@@ -1,8 +1,10 @@
+'use client';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import Link from 'next/link';
 import { FC } from 'react';
+import { signIn } from 'next-auth/react';
 
 interface pageProps {}
 
@@ -31,7 +33,12 @@ const page: FC<pageProps> = ({}) => {
         placeholder="Enter your password"
         className="mb-6"
       />
-      <Button className="w-full" variant="primary" type="submit">
+      <Button
+        className="w-full"
+        variant="primary"
+        type="submit"
+        onClick={() => signIn()}
+      >
         Login
       </Button>
       <p className="text-center text-gray-500 mt-6 flex flex-col xl:flex-row xl:gap-1 xl:justify-center">

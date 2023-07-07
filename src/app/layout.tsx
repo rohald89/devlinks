@@ -1,3 +1,4 @@
+import Providers from '@/components/Providers';
 import { cn } from '@/lib/utils';
 import '@/styles/global.css';
 import { Instrument_Sans } from 'next/font/google';
@@ -16,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(font.className, 'bg-gray-100')}>{children}</body>
+      <body className={cn(font.className, 'bg-gray-100')}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
