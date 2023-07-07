@@ -6,24 +6,22 @@ import Link from 'next/link';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
 import { useMutation } from '@tanstack/react-query';
-import { UserRequest, UserValidator } from '@/lib/validators/user';
+import { SignUpRequest, SignUpValidator } from '@/lib/validators/user';
 import axios, { AxiosError } from 'axios';
-import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/hooks/use-toast';
+import { signIn } from 'next-auth/react';
 
-interface SignUpFormProps {}
+interface SignUpProps {}
 
-const SignUpForm: FC<SignUpFormProps> = ({}) => {
-  const router = useRouter();
-
+const SignUp: FC<SignUpProps> = ({}) => {
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<UserRequest>({
-    resolver: zodResolver(UserValidator),
+  } = useForm<SignUpRequest>({
+    resolver: zodResolver(SignUpValidator),
     defaultValues: {
       email: '',
       password: '',
@@ -32,8 +30,8 @@ const SignUpForm: FC<SignUpFormProps> = ({}) => {
   });
 
   const { mutate: createUser, isLoading } = useMutation({
-    mutationFn: async ({ email, password, confirmPassword }: UserRequest) => {
-      const payload: UserRequest = {
+    mutationFn: async ({ email, password, confirmPassword }: SignUpRequest) => {
+      const payload: SignUpRequest = {
         email,
         password,
         confirmPassword,
@@ -64,7 +62,7 @@ const SignUpForm: FC<SignUpFormProps> = ({}) => {
       toast({
         description: 'Account created successfully',
       });
-      router.refresh();
+      signIn();
     },
   });
   return (
@@ -146,4 +144,4 @@ const SignUpForm: FC<SignUpFormProps> = ({}) => {
   );
 };
 
-export default SignUpForm;
+export default SignUp;
