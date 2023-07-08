@@ -23,8 +23,7 @@ const PlatformSelect: FC<PlatformSelectProps> = ({}) => {
           return (
             <SelectItem key={platform} value={platform}>
               <span className="flex items-center gap-2">
-                {icon}
-                {name}
+                {icon} {name}
               </span>
             </SelectItem>
           );
