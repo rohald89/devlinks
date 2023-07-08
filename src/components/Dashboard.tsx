@@ -1,19 +1,44 @@
-import { FC } from 'react';
-import { TabsContent } from '@/components/ui/Tabs';
+import type { FC } from 'react';
+import type { Link } from '@prisma/client';
+
 import { Button } from '@/components/ui/Button';
-import GetStarted from '@/components/GetStarted';
-import Preview from '@/components/Preview';
+import { TabsContent } from '@/components/ui/Tabs';
 import { Label } from '@/components/ui/Label';
 import { Input } from '@/components/ui/Input';
-import { Icons } from '@/components/Icons';
+
+import GetStarted from '@/components/GetStarted';
+import Preview from '@/components/Preview';
 import LinkInput from '@/components/LinkInput';
+import { Icons } from '@/components/Icons';
+import { useRouter } from 'next/navigation';
+import CreateLink from './CreateLink';
 
 interface DashboardProps {}
 
-const Dashboard: FC<DashboardProps> = ({}) => {
+const Dashboard: FC<DashboardProps> = async ({}) => {
+  const tempLinks: Link[] = [
+    {
+      id: '1',
+      url: 'https://twitter.com/xxxxxxxxx',
+      order: 1,
+      platform: 'TWITTER',
+      userId: '1',
+    },
+    {
+      id: '2',
+      url: 'https://github.com/xxxxxxxxx',
+      order: 1,
+      platform: 'GITHUB',
+      userId: '1',
+    },
+  ];
+
   return (
     <div className="m-6 flex gap-6">
+      {/* Mockup preview on Desktop */}
       <Preview />
+
+      {/* Link TabContent */}
       <TabsContent value="links">
         <div className="border-b border-gray-300 p-6">
           <h1 className="text-2xl font-bold md:text-heading-md">
@@ -23,23 +48,22 @@ const Dashboard: FC<DashboardProps> = ({}) => {
             Add/edit/remove links below and then share all your profiles with
             the world!
           </p>
-          <Button variant="outline" className="w-full mt-10">
-            + Add new Link
-          </Button>
+          <CreateLink />
           {/* LinkContainer */}
           <div className="mt-6 space-y-6">
-            <LinkInput />
-            <LinkInput />
-            <LinkInput />
-            <LinkInput />
+            {tempLinks.map((link) => (
+              <LinkInput key={link.id} link={link} />
+            ))}
           </div>
           {/* When no links are found show GetStarted */}
-          <GetStarted />
+          {tempLinks.length === 0 && <GetStarted />}
         </div>
         <div className="p-4">
           <Button className="w-full">Save</Button>
         </div>
       </TabsContent>
+
+      {/* Profile TabContent */}
       <TabsContent value="profile">
         <div className="border-b border-gray-300 p-6">
           <h1 className="text-2xl font-bold md:text-heading-md">

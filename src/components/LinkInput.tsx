@@ -1,12 +1,19 @@
-import { FC } from 'react';
-import { Icons } from './Icons';
+'use client';
+
+import type { FC } from 'react';
+import type { Link } from '@prisma/client';
+
 import { Label } from '@/components/ui/Label';
 import { Input } from '@/components/ui/Input';
-import PlatformSelect from './PlatformSelect';
 
-interface LinkInputProps {}
+import PlatformSelect from '@/components/PlatformSelect';
+import { Icons } from '@/components/Icons';
 
-const LinkInput: FC<LinkInputProps> = ({}) => {
+interface LinkInputProps {
+  link: Link;
+}
+
+const LinkInput: FC<LinkInputProps> = ({ link }) => {
   return (
     <div className="p-5 rounded-xl bg-background text-gray-500">
       <div className="flex items-center gap-2 ">
@@ -15,13 +22,15 @@ const LinkInput: FC<LinkInputProps> = ({}) => {
         <p className="text-body-md">Remove</p>
       </div>
       <Label htmlFor="firstName">Platform</Label>
-      <PlatformSelect />
+      <PlatformSelect value={link.platform} />
 
       <Label htmlFor="link">Link</Label>
       <Input
         icon="link"
         type="text"
         id="link"
+        value={link.url}
+        onChange={() => {}}
         placeholder="e.g. https://www.github.com/johnappleseed"
       />
     </div>

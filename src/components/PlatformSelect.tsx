@@ -9,11 +9,13 @@ import {
 import { getPlatform } from '@/lib/utils';
 import { PlatformType } from '@prisma/client';
 
-interface PlatformSelectProps {}
+interface PlatformSelectProps {
+  value: PlatformType;
+}
 
-const PlatformSelect: FC<PlatformSelectProps> = ({}) => {
+const PlatformSelect: FC<PlatformSelectProps> = ({ value }) => {
   return (
-    <Select>
+    <Select defaultValue={value}>
       <SelectTrigger>
         <SelectValue placeholder="Platform" />
       </SelectTrigger>
