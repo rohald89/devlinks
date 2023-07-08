@@ -6,33 +6,14 @@ import { TabsContent } from '@/components/ui/Tabs';
 import { Label } from '@/components/ui/Label';
 import { Input } from '@/components/ui/Input';
 
-import GetStarted from '@/components/GetStarted';
 import Preview from '@/components/Preview';
-import LinkInput from '@/components/LinkInput';
 import { Icons } from '@/components/Icons';
-import { useRouter } from 'next/navigation';
 import CreateLink from './CreateLink';
+import LinkContainer from './LinkContainer';
 
 interface DashboardProps {}
 
 const Dashboard: FC<DashboardProps> = async ({}) => {
-  const tempLinks: Link[] = [
-    {
-      id: '1',
-      url: 'https://twitter.com/xxxxxxxxx',
-      order: 1,
-      platform: 'TWITTER',
-      userId: '1',
-    },
-    {
-      id: '2',
-      url: 'https://github.com/xxxxxxxxx',
-      order: 1,
-      platform: 'GITHUB',
-      userId: '1',
-    },
-  ];
-
   return (
     <div className="m-6 flex gap-6">
       {/* Mockup preview on Desktop */}
@@ -50,13 +31,7 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
           </p>
           <CreateLink />
           {/* LinkContainer */}
-          <div className="mt-6 space-y-6">
-            {tempLinks.map((link) => (
-              <LinkInput key={link.id} link={link} />
-            ))}
-          </div>
-          {/* When no links are found show GetStarted */}
-          {tempLinks.length === 0 && <GetStarted />}
+          <LinkContainer />
         </div>
         <div className="p-4">
           <Button className="w-full">Save</Button>

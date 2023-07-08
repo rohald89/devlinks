@@ -33,3 +33,31 @@ export async function POST(req: Request) {
     return new Response('Could not create link', { status: 500 });
   }
 }
+
+export async function GET(req: Request) {
+  console.log('GET', req);
+  try {
+    const session = await getAuthSession();
+
+    if (!session?.user) {
+      return new Response('Unauthorized', { status: 401 });
+    }
+
+    const links = await db.link.findMany({
+      where: {
+        userId: session.user.id,
+      },
+      orderBy: {
+        order: 'asc',
+      },
+    });
+
+    return new Response(JSON.stringify(links), {
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+  } catch (error) {
+    return new Response('Could not get links', { status: 500 });
+  }
+}

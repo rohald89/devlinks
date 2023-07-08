@@ -48,8 +48,7 @@ const CreateLink: FC<CreateLinkProps> = ({}) => {
       });
     },
     onSuccess: (data) => {
-      console.log(data);
-      router.push(`/dashboard`);
+      router.refresh();
       toast({
         title: 'Link created',
         description: 'Your link has been created.',

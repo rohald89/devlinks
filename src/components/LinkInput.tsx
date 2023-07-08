@@ -11,14 +11,15 @@ import { Icons } from '@/components/Icons';
 
 interface LinkInputProps {
   link: Link;
+  index: number;
 }
 
-const LinkInput: FC<LinkInputProps> = ({ link }) => {
+const LinkInput: FC<LinkInputProps> = ({ link, index }) => {
   return (
     <div className="p-5 rounded-xl bg-background text-gray-500">
       <div className="flex items-center gap-2 ">
         <Icons.drag />
-        <h2 className="flex-1 text-heading-sm">Link #1</h2>
+        <h2 className="flex-1 text-heading-sm">Link #{index + 1}</h2>
         <p className="text-body-md">Remove</p>
       </div>
       <Label htmlFor="firstName">Platform</Label>
