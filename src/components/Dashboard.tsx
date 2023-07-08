@@ -2,10 +2,11 @@ import { FC } from 'react';
 import { TabsContent } from '@/components/ui/Tabs';
 import { Button } from '@/components/ui/Button';
 import GetStarted from '@/components/GetStarted';
-import Preview from './Preview';
-import { Label } from './ui/Label';
-import { Input } from './ui/Input';
-import { Icons } from './Icons';
+import Preview from '@/components/Preview';
+import { Label } from '@/components/ui/Label';
+import { Input } from '@/components/ui/Input';
+import { Icons } from '@/components/Icons';
+import LinkInput from '@/components/LinkInput';
 
 interface DashboardProps {}
 
@@ -25,8 +26,13 @@ const Dashboard: FC<DashboardProps> = ({}) => {
           <Button variant="outline" className="w-full mt-10">
             + Add new Link
           </Button>
-          {/* TODO Render all created link forms */}
-
+          {/* LinkContainer */}
+          <div className="mt-6 space-y-6">
+            <LinkInput />
+            <LinkInput />
+            <LinkInput />
+            <LinkInput />
+          </div>
           {/* When no links are found show GetStarted */}
           <GetStarted />
         </div>
