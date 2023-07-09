@@ -35,6 +35,7 @@ const LinkContainer: FC<LinkContainerProps> = ({}) => {
     },
   });
 
+  if (isLoading) return <p>Loading...</p>;
   return (
     <>
       <div className="mt-6 space-y-6">
