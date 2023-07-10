@@ -4,44 +4,25 @@ import { FC } from 'react';
 import { Input } from './ui/Input';
 import { Label } from './ui/Label';
 import { Icons } from './Icons';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { ProfileRequest, ProfileValidator } from '@/lib/validators/profile';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/hooks/use-toast';
-import { Button } from './ui/Button';
 
 interface ProfileDetailsProps {}
 
 const ProfileDetails: FC<ProfileDetailsProps> = ({}) => {
-  const { data: profile, isLoading } = useQuery({
-    queryKey: ['profile'],
-    queryFn: async () => {
-      const { data } = await axios.get('/api/profile');
-      return data;
-    },
-  });
-
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<ProfileRequest>({
     resolver: zodResolver(ProfileValidator),
-    defaultValues: {
-      firstName: profile?.firstName || '',
-      lastName: profile?.lastName || '',
-      email: profile?.email || '',
-      bio: profile?.bio || '',
-      picture: '',
-    },
-    values: {
-      firstName: profile?.firstName,
-      lastName: profile?.lastName,
-      email: profile?.email,
-      bio: profile?.bio || '',
-      picture: '',
+    defaultValues: async () => {
+      const { data } = await axios.get('/api/profile');
+      return data;
     },
   });
 
@@ -58,7 +39,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({}) => {
         lastName,
         email,
         bio,
-        picture: '',
+        picture,
       };
 
       console.log('payload', payload);

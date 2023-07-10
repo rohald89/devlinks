@@ -2,11 +2,8 @@ import type { FC } from 'react';
 
 import { Button } from '@/components/ui/Button';
 import { TabsContent } from '@/components/ui/Tabs';
-import { Label } from '@/components/ui/Label';
-import { Input } from '@/components/ui/Input';
 
 import Preview from '@/components/Preview';
-import { Icons } from '@/components/Icons';
 import CreateLink from './CreateLink';
 import LinkContainer from './LinkContainer';
 import ProfileDetails from './ProfileDetails';
