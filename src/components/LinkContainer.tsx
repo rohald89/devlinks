@@ -9,42 +9,23 @@ import axios from 'axios';
 interface LinkContainerProps {}
 
 const LinkContainer: FC<LinkContainerProps> = ({}) => {
-  const tempLinks: Link[] = [
-    {
-      id: '1',
-      url: 'https://twitter.com/xxxxxxxxx',
-      order: 1,
-      platform: 'TWITTER',
-      userId: '1',
-    },
-    {
-      id: '2',
-      url: 'https://github.com/xxxxxxxxx',
-      order: 1,
-      platform: 'GITHUB',
-      userId: '1',
-    },
-  ];
-
   const { data: links, isLoading } = useQuery({
     queryKey: ['links'],
     queryFn: async () => {
-      console.log('queryFn');
       const { data } = await axios.get('/api/link');
       return data;
     },
   });
 
   if (isLoading) return <p>Loading...</p>;
+  if (!links?.length) return <GetStarted />;
   return (
     <>
       <div className="mt-6 space-y-6">
-        {links.map((link, i) => (
+        {links.map((link: Link, i: number) => (
           <LinkInput index={i} key={link.id} link={link} />
         ))}
       </div>
-      {/* When no links are found show GetStarted */}
-      {tempLinks.length === 0 && <GetStarted />}
     </>
   );
 };

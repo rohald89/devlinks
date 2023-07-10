@@ -31,11 +31,11 @@ enum PlatformType {
 }
 
 model User {
-    id       String  @id @default(cuid())
-    email    String  @unique
+    id       String   @id @default(cuid())
+    email    String   @unique
     password String
-    name     String?
     links    Link[]
+    profile  Profile?
 }
 
 model Link {
@@ -46,4 +46,16 @@ model Link {
 
     user   User   @relation(fields: [userId], references: [id])
     userId String
+}
+
+model Profile {
+    id        String  @id @default(cuid())
+    firstName String?
+    lastName  String?
+    bio       String?
+    picture   String?
+    email     String?
+
+    user   User   @relation(fields: [userId], references: [id])
+    userId String @unique
 }
