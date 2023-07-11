@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { ProfileRequest, ProfileValidator } from '@/lib/validators/profile';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/hooks/use-toast';
+import FileUpload from './FileUpload';
 
 interface ProfileDetailsProps {
   profile: ProfileRequest;
@@ -89,6 +90,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile }) => {
             </p>
           </div>
         </div>
+        <FileUpload />
         <div className="md:flex items-center mt-6">
           <Label htmlFor="firstName" className="md:basis-2/5">
             Bio

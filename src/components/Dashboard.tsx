@@ -40,7 +40,7 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
             Add/edit/remove links below and then share all your profiles with
             the world!
           </p>
-          <CreateLink />
+          {!links.length && <CreateLink />}
           {/* LinkContainer */}
           <LinkContainer links={links} />
         </div>

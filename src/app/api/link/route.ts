@@ -91,5 +91,11 @@ export async function PATCH(req: Request) {
     });
 
     return new Response('Links updated');
-  } catch (error) {}
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return new Response(error.message, { status: 422 });
+    }
+
+    return new Response('Could not update links', { status: 500 });
+  }
 }

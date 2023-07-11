@@ -22,7 +22,6 @@ const CreateLink: FC<CreateLinkProps> = ({}) => {
       };
 
       const res = await axios.post('/api/link', payload);
-      console.log(res);
       return res.data as string;
     },
     onError: (err) => {
@@ -48,11 +47,11 @@ const CreateLink: FC<CreateLinkProps> = ({}) => {
       });
     },
     onSuccess: (data) => {
-      router.refresh();
       toast({
         title: 'Link created',
         description: 'Your link has been created.',
       });
+      router.refresh();
     },
   });
 
@@ -62,6 +61,7 @@ const CreateLink: FC<CreateLinkProps> = ({}) => {
       className="w-full mt-10"
       isLoading={isLoading}
       disabled={isLoading}
+      type="button"
       onClick={() => createLink()}
     >
       + Add new Link

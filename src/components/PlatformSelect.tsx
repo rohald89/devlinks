@@ -15,7 +15,6 @@ interface PlatformSelectProps {
 }
 
 const PlatformSelect: FC<PlatformSelectProps> = ({ value, onValueChange }) => {
-  // const { onChange, onBlur, name, ref } = register('firstName');
   return (
     <Select defaultValue={value} onValueChange={onValueChange}>
       <SelectTrigger>

@@ -15,6 +15,7 @@ interface LinkInputProps {
   index: number;
   //   TODO Type this
   register: any;
+  errors: any;
   remove: any;
   control: any;
 }
@@ -46,10 +47,7 @@ const LinkInput: FC<LinkInputProps> = ({
         name={`links.${index}.platform`}
         control={control}
         render={({ field }) => (
-          <PlatformSelect
-            value={link.platform}
-            onValueChange={field.onChange}
-          />
+          <PlatformSelect value={field.value} onValueChange={field.onChange} />
         )}
       />
 
