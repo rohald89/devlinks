@@ -11,18 +11,23 @@ import { ProfileRequest, ProfileValidator } from '@/lib/validators/profile';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/hooks/use-toast';
 
-interface ProfileDetailsProps {}
+interface ProfileDetailsProps {
+  profile: ProfileRequest;
+}
 
-const ProfileDetails: FC<ProfileDetailsProps> = ({}) => {
+const ProfileDetails: FC<ProfileDetailsProps> = ({ profile }) => {
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<ProfileRequest>({
     resolver: zodResolver(ProfileValidator),
-    defaultValues: async () => {
-      const { data } = await axios.get('/api/profile');
-      return data;
+    defaultValues: {
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      email: profile.email,
+      bio: profile.bio,
+      picture: profile.picture,
     },
   });
 

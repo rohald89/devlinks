@@ -7,10 +7,24 @@ import Preview from '@/components/Preview';
 import CreateLink from './CreateLink';
 import LinkContainer from './LinkContainer';
 import ProfileDetails from './ProfileDetails';
+import { getAuthSession } from '@/lib/auth';
+import { db } from '@/lib/db';
 
 interface DashboardProps {}
 
 const Dashboard: FC<DashboardProps> = async ({}) => {
+  const session = await getAuthSession();
+
+  const { links, profile } = await db.user.findUnique({
+    where: {
+      id: session?.user.id,
+    },
+    include: {
+      links: true,
+      profile: true,
+    },
+  });
+
   return (
     <div className="m-6 flex gap-6">
       {/* Mockup preview on Desktop */}
@@ -28,10 +42,12 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
           </p>
           <CreateLink />
           {/* LinkContainer */}
-          <LinkContainer />
+          <LinkContainer links={links} />
         </div>
         <div className="p-4">
-          <Button className="w-full">Save</Button>
+          <Button className="w-full" type="submit" form="editLinks">
+            Save
+          </Button>
         </div>
       </TabsContent>
 
@@ -44,7 +60,7 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
           <p className="mt-2 text-body-md text-gray-500 ">
             Add your details to create a personal touch to your profile.
           </p>
-          <ProfileDetails />
+          <ProfileDetails profile={profile} />
         </div>
         <div className="p-4">
           <Button className="w-full" type="submit" form="editProfile">

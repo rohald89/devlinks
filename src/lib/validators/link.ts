@@ -24,3 +24,9 @@ export const LinkValidator = z.object({
 });
 
 export type CreateLinkPayload = z.infer<typeof LinkValidator>;
+
+export const UpdateLinkValidator = z.object({
+  links: z.array(LinkValidator),
+});
+
+export type UpdateLinkPayload = z.infer<typeof UpdateLinkValidator>;

@@ -11,11 +11,13 @@ import { PlatformType } from '@prisma/client';
 
 interface PlatformSelectProps {
   value: PlatformType;
+  onValueChange: (value: PlatformType) => void;
 }
 
-const PlatformSelect: FC<PlatformSelectProps> = ({ value }) => {
+const PlatformSelect: FC<PlatformSelectProps> = ({ value, onValueChange }) => {
+  // const { onChange, onBlur, name, ref } = register('firstName');
   return (
-    <Select defaultValue={value}>
+    <Select defaultValue={value} onValueChange={onValueChange}>
       <SelectTrigger>
         <SelectValue placeholder="Platform" />
       </SelectTrigger>

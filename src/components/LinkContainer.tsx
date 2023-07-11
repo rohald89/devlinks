@@ -1,28 +1,97 @@
-import LinkInput from './LinkInput';
+'use client';
+
+import { FC } from 'react';
 import GetStarted from './GetStarted';
-import { db } from '@/lib/db';
-import { getAuthSession } from '@/lib/auth';
+import LinkInput from './LinkInput';
 import { Link } from '@prisma/client';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { UpdateLinkPayload, UpdateLinkValidator } from '@/lib/validators/link';
+import { useFieldArray, useForm } from 'react-hook-form';
+import { Button } from './ui/Button';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-interface LinkContainerProps {}
-const LinkContainer = async ({}: LinkContainerProps) => {
-  const session = await getAuthSession();
+interface LinkContainerProps {
+  links: Link[];
+}
 
-  const links = await db.link.findMany({
-    where: {
-      userId: session?.user.id,
+const LinkContainer: FC<LinkContainerProps> = ({ links }) => {
+  const initialLinks = links.map((link) => ({
+    url: link.url,
+    platform: link.platform,
+    order: link.order,
+  }));
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    control,
+  } = useForm<UpdateLinkPayload>({
+    resolver: zodResolver(UpdateLinkValidator),
+    defaultValues: {
+      links: initialLinks,
+    },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'links',
+  });
+
+  const { mutate: updateLinks, isLoading } = useMutation({
+    mutationFn: async (links: UpdateLinkPayload) => {
+      const payload: UpdateLinkPayload = {
+        links: links.links.map((link) => ({
+          url: link.url,
+          platform: link.platform,
+          order: link.order,
+        })),
+      };
+      const { data } = await axios.patch('api/link', payload);
+      return data;
+    },
+    onError: (err) => {
+      // TODO - handle error
+      console.log(err);
     },
   });
 
   if (!links?.length) return <GetStarted />;
-
   return (
     <>
-      <div className="mt-6 space-y-6">
-        {links.map((link: Link, i: number) => (
-          <LinkInput index={i} key={link.id} link={link} />
+      <Button
+        variant="outline"
+        className="w-full mt-10"
+        onClick={() =>
+          append({
+            url: '',
+            platform: 'GITHUB',
+            order: links.length,
+          })
+        }
+      >
+        + Add new Link
+      </Button>
+      <form
+        className="mt-6 space-y-6"
+        id="editLinks"
+        onSubmit={handleSubmit((e) => {
+          console.log(e);
+          updateLinks(e);
+        })}
+      >
+        {fields.map((item, index) => (
+          <LinkInput
+            key={item.id}
+            index={index}
+            register={register}
+            errors={errors}
+            control={control}
+            link={item}
+            remove={remove}
+          />
         ))}
-      </div>
+      </form>
     </>
   );
 };

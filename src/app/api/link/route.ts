@@ -1,6 +1,6 @@
 import { getAuthSession } from '@/lib/auth';
 import { db } from '@/lib/db';
-import { LinkValidator } from '@/lib/validators/link';
+import { LinkValidator, UpdateLinkValidator } from '@/lib/validators/link';
 import { z } from 'zod';
 
 export async function POST(req: Request) {
@@ -35,7 +35,6 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  console.log('GET', req);
   try {
     const session = await getAuthSession();
 
@@ -60,4 +59,37 @@ export async function GET(req: Request) {
   } catch (error) {
     return new Response('Could not get links', { status: 500 });
   }
+}
+
+export async function PATCH(req: Request) {
+  try {
+    const session = await getAuthSession();
+
+    if (!session?.user) {
+      return new Response('Unauthorized', { status: 401 });
+    }
+
+    const body = await req.json();
+    const { links } = UpdateLinkValidator.parse(body);
+
+    // TODO: Clean this up
+
+    // delete existing links and create new ones
+    await db.link.deleteMany({
+      where: {
+        userId: session.user.id,
+      },
+    });
+
+    await db.link.createMany({
+      data: links.map((link) => ({
+        url: link.url,
+        order: link.order,
+        platform: link.platform,
+        userId: session.user.id,
+      })),
+    });
+
+    return new Response('Links updated');
+  } catch (error) {}
 }
