@@ -1,24 +1,21 @@
-'use client';
-import { FC } from 'react';
-import GetStarted from './GetStarted';
 import LinkInput from './LinkInput';
+import GetStarted from './GetStarted';
+import { db } from '@/lib/db';
+import { getAuthSession } from '@/lib/auth';
 import { Link } from '@prisma/client';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 
 interface LinkContainerProps {}
+const LinkContainer = async ({}: LinkContainerProps) => {
+  const session = await getAuthSession();
 
-const LinkContainer: FC<LinkContainerProps> = ({}) => {
-  const { data: links, isLoading } = useQuery({
-    queryKey: ['links'],
-    queryFn: async () => {
-      const { data } = await axios.get('/api/link');
-      return data;
+  const links = await db.link.findMany({
+    where: {
+      userId: session?.user.id,
     },
   });
 
-  if (isLoading) return <p>Loading...</p>;
   if (!links?.length) return <GetStarted />;
+
   return (
     <>
       <div className="mt-6 space-y-6">
