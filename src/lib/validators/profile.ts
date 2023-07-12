@@ -9,3 +9,9 @@ export const ProfileValidator = z.object({
 });
 
 export type ProfileRequest = z.infer<typeof ProfileValidator>;
+
+export const ProfileImageValidator = z.object({
+  picture: z.string(),
+});
+
+export type ProfileImageRequest = z.infer<typeof ProfileImageValidator>;

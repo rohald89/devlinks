@@ -1,9 +1,9 @@
 import { getAuthSession } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { ProfileValidator } from '@/lib/validators/profile';
+import { z } from 'zod';
 
 export async function GET(req: Request) {
-  //   console.log('GET', req);
   try {
     const session = await getAuthSession();
 
@@ -36,12 +36,6 @@ export async function PATCH(req: Request) {
     const body = await req.json();
     const { firstName, lastName, email, bio, picture } =
       ProfileValidator.parse(body);
-
-    // const usernameTaken = await db.user.findFirst({
-    //   where: { username: name },
-    // });
-
-    // if (usernameTaken) return new Response('Username taken', { status: 409 });
 
     await db.profile.update({
       where: { userId: session.user.id },
