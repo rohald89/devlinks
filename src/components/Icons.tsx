@@ -234,7 +234,7 @@ export const Icons = {
       viewBox="0 0 40 40"
     >
       <path
-        fill="#633CFF"
+        fill="currentColor"
         d="M33.75 6.25H6.25a2.5 2.5 0 0 0-2.5 2.5v22.5a2.5 2.5 0 0 0 2.5 2.5h27.5a2.5 2.5 0 0 0 2.5-2.5V8.75a2.5 2.5 0 0 0-2.5-2.5Zm0 2.5v16.055l-4.073-4.072a2.5 2.5 0 0 0-3.536 0l-3.125 3.125-6.875-6.875a2.5 2.5 0 0 0-3.535 0L6.25 23.339V8.75h27.5ZM6.25 26.875l8.125-8.125 12.5 12.5H6.25v-4.375Zm27.5 4.375h-3.34l-5.624-5.625L27.91 22.5l5.839 5.84v2.91ZM22.5 15.625a1.875 1.875 0 1 1 3.75 0 1.875 1.875 0 0 1-3.75 0Z"
       />
     </svg>
@@ -250,14 +250,29 @@ export const Icons = {
       <path fill="#737373" d="M0 0h12v1H0zM0 5h12v1H0z" />
     </svg>
   ),
-};
-
-export const PlatformIcons = {
-  github: () => (
+  rightArrow: () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      fill="none"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill="currentColor"
+        d="M2.667 7.333v1.334h8L7 12.333l.947.947L13.227 8l-5.28-5.28L7 3.667l3.667 3.666h-8Z"
+      />
+    </svg>
+  ),
+};
+
+export const PlatformIcons = {
+  github: (props: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -274,11 +289,12 @@ export const PlatformIcons = {
       </defs>
     </svg>
   ),
-  fem: () => (
+  fem: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -288,11 +304,12 @@ export const PlatformIcons = {
       />
     </svg>
   ),
-  twitter: () => (
+  twitter: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -302,11 +319,12 @@ export const PlatformIcons = {
       />
     </svg>
   ),
-  linkedin: () => (
+  linkedin: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -316,11 +334,12 @@ export const PlatformIcons = {
       />
     </svg>
   ),
-  youtube: () => (
+  youtube: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -330,11 +349,12 @@ export const PlatformIcons = {
       />
     </svg>
   ),
-  facebook: () => (
+  facebook: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -351,11 +371,12 @@ export const PlatformIcons = {
       </defs>
     </svg>
   ),
-  twitch: () => (
+  twitch: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -365,11 +386,12 @@ export const PlatformIcons = {
       />
     </svg>
   ),
-  dev: () => (
+  dev: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -396,11 +418,12 @@ export const PlatformIcons = {
       </defs>
     </svg>
   ),
-  codewars: () => (
+  codewars: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -417,11 +440,12 @@ export const PlatformIcons = {
       </defs>
     </svg>
   ),
-  codepen: () => (
+  codepen: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -431,11 +455,12 @@ export const PlatformIcons = {
       />
     </svg>
   ),
-  fcc: () => (
+  fcc: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -452,11 +477,12 @@ export const PlatformIcons = {
       </defs>
     </svg>
   ),
-  gitlab: () => (
+  gitlab: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -466,11 +492,12 @@ export const PlatformIcons = {
       />
     </svg>
   ),
-  hashnode: () => (
+  hashnode: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
+      {...props}
       fill="none"
       viewBox="0 0 16 16"
     >
@@ -487,11 +514,12 @@ export const PlatformIcons = {
       </defs>
     </svg>
   ),
-  stackoverflow: () => (
+  stackoverflow: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="17"
+      {...props}
       fill="none"
       viewBox="0 0 16 17"
     >
@@ -508,6 +536,6 @@ export const PlatformIcons = {
       </defs>
     </svg>
   ),
-  instagram: () => <span>tbd</span>,
-  treehouse: () => <span>tbd</span>,
+  instagram: (props: LucideProps) => <span>tbd</span>,
+  treehouse: (props: LucideProps) => <span>tbd</span>,
 };

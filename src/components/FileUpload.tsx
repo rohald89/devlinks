@@ -1,13 +1,21 @@
+'use client';
 import { useUploadThing } from '@/lib/uploadthing';
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { FileWithPath, useDropzone } from 'react-dropzone';
 import { Icons } from './Icons';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
+import { cn } from '@/lib/utils';
 
-interface FileUploadProps {}
+interface FileUploadProps {
+  image: string;
+}
 
-const FileUpload: FC<FileUploadProps> = ({}) => {
+const FileUpload: FC<FileUploadProps> = ({ image }) => {
+  console.log(image);
+  // TODO Manage initial state
+  const [profileImage, setProfileImage] = useState<string>(image || '');
+
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
     if (!acceptedFiles.length) return;
     startUpload([acceptedFiles[0]]);
@@ -23,6 +31,7 @@ const FileUpload: FC<FileUploadProps> = ({}) => {
       // console.log(file);
       if (!file?.length) return;
       updateProfileImage(file[0].fileKey);
+      setProfileImage(file[0].fileUrl);
     },
     onUploadError: () => {
       console.log('error');
@@ -46,18 +55,21 @@ const FileUpload: FC<FileUploadProps> = ({}) => {
       </p>
       <div className="basis-3/5 md:flex md:items-center">
         <div
-          {...getRootProps()}
-          className="bg-primary-100 text-heading-sm text-primary-600 px-10 py-16 rounded-xl flex flex-col items-center gap-2 justify-center aspect-square md:min-w-[200px] w-[200px]"
+          style={{ '--image-url': `url(${profileImage})` }}
+          className="bg-[image:var(--image-url)] bg-cover"
         >
-          <input {...getInputProps()} />
-          <div>
-            {/* {files.length > 0 && (
-              <button type="button" onClick={() => startUpload(files)}>
-                Upload {files.length} files
-              </button>
-            )} */}
+          <div
+            {...getRootProps()}
+            className={cn(
+              !profileImage
+                ? 'bg-primary-100 text-primary-600'
+                : ' backdrop-brightness-50',
+              'cursor-pointer text-heading-sm text-white px-10 py-16 rounded-xl flex flex-col items-center gap-2 justify-center aspect-square md:min-w-[200px] w-[200px]'
+            )}
+          >
+            <input {...getInputProps()} />
+            <Icons.image />+ Upload Image
           </div>
-          <Icons.image />+ Upload Image
         </div>
         <p className="text-body-sm text-gray-500 mt-6 md:mt-0 md:ml-6">
           Image must be below 1024x1024px. Use PNG or JPG format.

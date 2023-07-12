@@ -10,13 +10,14 @@ import { ProfileRequest, ProfileValidator } from '@/lib/validators/profile';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/hooks/use-toast';
 import FileUpload from './FileUpload';
-import { Textarea } from './ui/textarea';
+import { Textarea } from '@/components/ui/Textarea';
 
 interface ProfileDetailsProps {
   profile: ProfileRequest;
+  image: string;
 }
 
-const ProfileDetails: FC<ProfileDetailsProps> = ({ profile }) => {
+const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
   const {
     handleSubmit,
     register,
@@ -72,7 +73,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile }) => {
       })}
     >
       <div className="mt-10 p-5 rounded-xl bg-background ">
-        <FileUpload />
+        <FileUpload image={image} />
         <div className="md:flex items-center mt-6">
           <Label htmlFor="firstName" className="md:basis-2/5">
             Bio

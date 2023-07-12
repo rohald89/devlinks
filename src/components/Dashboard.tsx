@@ -9,7 +9,6 @@ import LinkContainer from './LinkContainer';
 import ProfileDetails from './ProfileDetails';
 import { getAuthSession } from '@/lib/auth';
 import { db } from '@/lib/db';
-import Image from 'next/image';
 import { utapi } from 'uploadthing/server';
 
 interface DashboardProps {}
@@ -26,6 +25,7 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
       profile: true,
     },
   });
+
   const profileImage = await utapi.getFileUrls(profile?.picture);
 
   return (
@@ -60,16 +60,10 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
           <h1 className="text-2xl font-bold md:text-heading-md">
             Profile Details
           </h1>
-          <Image
-            src={profileImage[0].url}
-            alt={`${profile.firstName}'s profile image`}
-            width={200}
-            height={200}
-          />
           <p className="mt-2 text-body-md text-gray-500 ">
             Add your details to create a personal touch to your profile.
           </p>
-          <ProfileDetails profile={profile} />
+          <ProfileDetails profile={profile} image={profileImage[0].url} />
         </div>
         <div className="p-4">
           <Button className="w-full" type="submit" form="editProfile">
