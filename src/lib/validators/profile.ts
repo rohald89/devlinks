@@ -1,8 +1,18 @@
 import { z } from 'zod';
 
 export const ProfileValidator = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
+  firstName: z
+    .string()
+    .min(1, {
+      message: "Can't be empty",
+    })
+    .max(50),
+  lastName: z
+    .string()
+    .min(2, {
+      message: "Can't be empty",
+    })
+    .max(50),
   bio: z.string().nullable(),
   picture: z.string().nullable(),
   email: z.string().email().nullable(),

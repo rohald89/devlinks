@@ -1,7 +1,14 @@
 import { z } from 'zod';
 
 export const LinkValidator = z.object({
-  url: z.string().url(),
+  url: z
+    .string()
+    .min(1, {
+      message: "Can't be empty",
+    })
+    .url({
+      message: 'Please check the URL',
+    }),
   platform: z.enum([
     'GITHUB',
     'TREEHOUSE',

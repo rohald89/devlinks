@@ -12,6 +12,7 @@ import { toast } from '@/hooks/use-toast';
 import FileUpload from './FileUpload';
 import { Textarea } from '@/components/ui/Textarea';
 import { useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 interface ProfileDetailsProps {
   profile: ProfileRequest;
@@ -35,6 +36,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
     },
   });
 
+  console.log(errors);
   const { mutate: editProfile, isLoading: isEditing } = useMutation({
     mutationFn: async ({
       firstName,
@@ -103,9 +105,10 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
           <Input
             type="text"
             id="firstName"
-            placeholder="Enter your first name"
+            placeholder="e.g. John"
             className="mb-3 md:basis-3/5"
             {...register('firstName')}
+            error={errors?.firstName?.message}
           />
         </div>
         <div className="md:flex items-center">
@@ -115,9 +118,10 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
           <Input
             type="text"
             id="lastName"
-            placeholder="Enter your last name"
+            placeholder="e.g. Appleseed"
             className="mb-3 md:basis-3/5"
             {...register('lastName')}
+            error={errors?.lastName?.message}
           />
         </div>
         <div className="md:flex items-center">
@@ -127,7 +131,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
           <Input
             type="email"
             id="email"
-            placeholder="Enter your email"
+            placeholder="e.g. email@example.com"
             className="mb-3 md:basis-3/5"
             {...register('email')}
           />

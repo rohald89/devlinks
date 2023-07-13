@@ -15,7 +15,7 @@ interface LinkInputProps {
   index: number;
   //   TODO Type this
   register: any;
-  errors: any;
+  error: string;
   remove: any;
   control: any;
 }
@@ -24,10 +24,11 @@ const LinkInput: FC<LinkInputProps> = ({
   link,
   index,
   register,
-  errors,
+  error,
   remove,
   control,
 }) => {
+  console.log(error);
   return (
     <div className="p-5 rounded-xl bg-background text-gray-500">
       <div className="flex items-center gap-2 ">
@@ -56,6 +57,7 @@ const LinkInput: FC<LinkInputProps> = ({
         icon="link"
         type="text"
         id="link"
+        error={error}
         {...register(`links.${index}.url`)}
         placeholder="e.g. https://www.github.com/johnappleseed"
       />

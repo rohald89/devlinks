@@ -8,6 +8,7 @@ type Icons = 'mail' | 'lock' | 'link';
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: Icons;
+  error?: string;
 }
 
 const getIconsFromName = (iconName: Icons) => {
@@ -22,14 +23,15 @@ const getIconsFromName = (iconName: Icons) => {
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, icon, ...props }, ref) => {
+  ({ className, type, icon, error, ...props }, ref) => {
     return (
       <div className={cn('relative', className)}>
         <input
           type={type}
           className={cn(
             icon ? 'pl-9' : 'pl-3',
-            'flex h-10 w-full rounded-md text-gray-900 border border-gray-300 bg-white pr-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:shadow-active focus-visible:outline-none focus-visible:border-primary-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 file:border-0 file:bg-transparent file:text-sm file:font-medium '
+            'flex h-10 w-full rounded-md text-gray-900 border border-gray-300 bg-white pr-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:shadow-active focus-visible:outline-none focus-visible:border-primary-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 file:border-0 file:bg-transparent file:text-sm file:font-medium ',
+            error ? 'border-red-500' : ''
           )}
           ref={ref}
           {...props}
@@ -38,6 +40,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             {getIconsFromName(icon)()}
           </div>
+        )}
+        {error && (
+          <p className="absolute right-2 top-1/2 -translate-y-1/2 text-red-500 text-body-sm">
+            {error}
+          </p>
         )}
       </div>
     );
