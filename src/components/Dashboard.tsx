@@ -26,8 +26,10 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
     },
   });
 
-  const profileImage = await utapi.getFileUrls(profile?.picture);
-
+  let profileImage = null;
+  if (profile.picture !== null) {
+    profileImage = await utapi.getFileUrls(profile?.picture);
+  }
   return (
     <div className="m-6 flex gap-6">
       {/* Mockup preview on Desktop */}
@@ -63,7 +65,10 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
           <p className="mt-2 text-body-md text-gray-500 ">
             Add your details to create a personal touch to your profile.
           </p>
-          <ProfileDetails profile={profile} image={profileImage[0].url} />
+          <ProfileDetails
+            profile={profile}
+            image={profileImage ? profileImage[0].url : null}
+          />
         </div>
         <div className="p-4">
           <Button className="w-full" type="submit" form="editProfile">

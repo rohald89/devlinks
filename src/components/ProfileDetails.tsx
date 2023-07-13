@@ -11,13 +11,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/hooks/use-toast';
 import FileUpload from './FileUpload';
 import { Textarea } from '@/components/ui/Textarea';
+import { useRouter } from 'next/navigation';
 
 interface ProfileDetailsProps {
   profile: ProfileRequest;
-  image: string;
+  image: string | null;
 }
 
 const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
+  const router = useRouter();
   const {
     handleSubmit,
     register,
@@ -49,7 +51,6 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
         picture,
       };
 
-      console.log('payload', payload);
       const { data } = await axios.patch('api/profile', payload);
       return data;
     },
@@ -61,6 +62,13 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
         description: 'Please try again later.',
         variant: 'destructive',
       });
+    },
+    onSuccess: () => {
+      toast({
+        title: 'Profile updated',
+        description: 'Your profile has been updated successfully.',
+      });
+      router.refresh();
     },
   });
 

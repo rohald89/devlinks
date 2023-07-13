@@ -10,12 +10,14 @@ import { UpdateLinkPayload, UpdateLinkValidator } from '@/lib/validators/link';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { Button } from './ui/Button';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 
 interface LinkContainerProps {
   links: Link[];
 }
 
 const LinkContainer: FC<LinkContainerProps> = ({ links }) => {
+  const router = useRouter();
   const initialLinks = links.map((link) => ({
     url: link.url,
     platform: link.platform,
@@ -53,6 +55,9 @@ const LinkContainer: FC<LinkContainerProps> = ({ links }) => {
     onError: (err) => {
       // TODO - handle error
       console.log(err);
+    },
+    onSuccess: () => {
+      router.refresh();
     },
   });
 
