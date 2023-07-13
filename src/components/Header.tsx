@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Icons } from '@/components/Icons';
-import { Button } from '@/components/ui/Button';
+import { Button, buttonVariants } from '@/components/ui/Button';
+import Link from 'next/link';
 
 interface HeaderProps {}
 
@@ -31,12 +32,18 @@ const Header: FC<HeaderProps> = ({}) => {
           </Button>
         </TabsTrigger>
       </TabsList>
-      <Button className="px-4 md:px-7" variant="outline">
+      <Link
+        href="/preview"
+        className={buttonVariants({
+          variant: 'outline',
+          className: 'px-4 md:px-7',
+        })}
+      >
         <span className="md:hidden">
           <Icons.preview />
         </span>
         <span className="hidden md:block">Preview</span>
-      </Button>
+      </Link>
     </header>
   );
 };

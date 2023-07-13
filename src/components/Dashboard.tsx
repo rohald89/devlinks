@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { Button } from '@/components/ui/Button';
 import { TabsContent } from '@/components/ui/Tabs';
 
-import Preview from '@/components/Preview';
+import Mockup from '@/components/Mockup';
 import CreateLink from './CreateLink';
 import LinkContainer from './LinkContainer';
 import ProfileDetails from './ProfileDetails';
@@ -31,7 +31,7 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
   return (
     <div className="m-6 flex gap-6">
       {/* Mockup preview on Desktop */}
-      <Preview />
+      <Mockup />
 
       {/* Link TabContent */}
       <TabsContent value="links">

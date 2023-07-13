@@ -30,8 +30,8 @@ const PreviewCard: FC<PreviewCardProps> = async ({}) => {
 
   return (
     <div
-      className="z-30 bg-white flex flex-col justify-center items-center pt-32 md:py-12 md:px-14 md:rounded-[24px]
-    md:absolute md:top-[200px] md:right-1/2 md:translate-x-1/2
+      className="z-30 mx-auto bg-white flex flex-col justify-center items-center pt-32 md:py-12 md:px-14 md:rounded-[24px]
+    md:absolute md:top-[200px] md:right-1/2 md:translate-x-1/2 md:shadow-card
     max-w-[350px] "
     >
       <Image
@@ -47,7 +47,7 @@ const PreviewCard: FC<PreviewCardProps> = async ({}) => {
       <p className="text-body-md text-gray-500 mt-2">{user?.profile?.email}</p>
       <div className="mt-14 space-y-5">
         {user?.links?.map((link) => (
-          <LinkCard key={link.id} link={link} />
+          <LinkCard key={link.id} link={link} size={20} />
         ))}
       </div>
     </div>
