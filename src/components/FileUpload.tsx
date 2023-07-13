@@ -12,7 +12,6 @@ interface FileUploadProps {
 }
 
 const FileUpload: FC<FileUploadProps> = ({ image }) => {
-  console.log(image);
   // TODO Manage initial state
   const [profileImage, setProfileImage] = useState<string>(image || '');
 
@@ -28,13 +27,12 @@ const FileUpload: FC<FileUploadProps> = ({ image }) => {
 
   const { startUpload } = useUploadThing('imageUploader', {
     onClientUploadComplete: (file) => {
-      // console.log(file);
       if (!file?.length) return;
       updateProfileImage(file[0].fileKey);
       setProfileImage(file[0].fileUrl);
     },
     onUploadError: () => {
-      console.log('error');
+      // TODO - handle error
     },
   });
 

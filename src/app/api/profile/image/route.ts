@@ -19,7 +19,6 @@ export async function PATCH(req: Request) {
     });
 
     if (currentImage?.picture) {
-      console.log('deleting', currentImage.picture);
       await utapi.deleteFiles(currentImage.picture);
     }
 

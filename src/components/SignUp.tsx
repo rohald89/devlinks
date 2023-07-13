@@ -41,7 +41,6 @@ const SignUp: FC<SignUpProps> = ({}) => {
       return data;
     },
     onError: (err) => {
-      console.log(err);
       if (err instanceof AxiosError) {
         if (err.response?.status === 409) {
           return toast({
@@ -69,7 +68,6 @@ const SignUp: FC<SignUpProps> = ({}) => {
     <form
       className="bg-white rounded-xl w-full max-w-lg md:p-10"
       onSubmit={handleSubmit((e) => {
-        console.log(e);
         createUser(e);
       })}
     >

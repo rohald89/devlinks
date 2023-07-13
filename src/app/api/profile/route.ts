@@ -28,7 +28,6 @@ export async function GET(req: Request) {
 }
 
 export async function PATCH(req: Request) {
-  console.log('PATCH', req);
   try {
     const session = await getAuthSession();
     if (!session) return new Response('Unauthorized', { status: 401 });

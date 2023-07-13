@@ -28,7 +28,6 @@ const LinkInput: FC<LinkInputProps> = ({
   remove,
   control,
 }) => {
-  console.log(error);
   return (
     <div className="p-5 rounded-xl bg-background text-gray-500">
       <div className="flex items-center gap-2 ">

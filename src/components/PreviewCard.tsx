@@ -29,7 +29,6 @@ const PreviewCard: FC<PreviewCardProps> = async ({}) => {
     profileImage = await utapi.getFileUrls(user?.profile?.picture);
   }
 
-  console.log(!user?.profile?.firstName && !user?.profile?.lastName);
   return (
     <div
       className="z-30 mx-auto bg-white flex flex-col justify-center items-center pt-32 md:py-12 md:px-14 md:rounded-[24px]

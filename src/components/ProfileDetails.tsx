@@ -36,7 +36,6 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
     },
   });
 
-  console.log(errors);
   const { mutate: editProfile, isLoading: isEditing } = useMutation({
     mutationFn: async ({
       firstName,
@@ -58,7 +57,6 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
     },
     onError: (err) => {
       // TODO - handle error
-      console.log(err);
       toast({
         title: 'Something went wrong',
         description: 'Please try again later.',
@@ -78,7 +76,6 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
     <form
       id="editProfile"
       onSubmit={handleSubmit((e) => {
-        console.log(e);
         editProfile(e);
       })}
     >

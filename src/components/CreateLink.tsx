@@ -25,7 +25,6 @@ const CreateLink: FC<CreateLinkProps> = ({}) => {
       return res.data as string;
     },
     onError: (err) => {
-      console.log(err);
       if (err instanceof AxiosError) {
         if (err.response?.status === 422) {
           return toast({

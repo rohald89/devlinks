@@ -54,14 +54,12 @@ const LinkContainer: FC<LinkContainerProps> = ({ links }) => {
     },
     onError: (err) => {
       // TODO - handle error
-      console.log(err);
     },
     onSuccess: () => {
       router.refresh();
     },
   });
 
-  console.log(errors);
   if (!links?.length) return <GetStarted />;
   return (
     <>
@@ -82,25 +80,21 @@ const LinkContainer: FC<LinkContainerProps> = ({ links }) => {
         className="mt-6 space-y-6 max-h-[600px] overflow-y-scroll"
         id="editLinks"
         onSubmit={handleSubmit((e) => {
-          console.log(e);
           updateLinks(e);
         })}
       >
-        {fields.map((item, index) => {
-          console.log(errors?.links?.[index]);
-          return (
-            <LinkInput
-              key={item.id}
-              index={index}
-              register={register}
-              errors={errors}
-              control={control}
-              link={item}
-              error={errors?.links?.[index]?.url.message}
-              remove={remove}
-            />
-          );
-        })}
+        {fields.map((item, index) => (
+          <LinkInput
+            key={item.id}
+            index={index}
+            register={register}
+            errors={errors}
+            control={control}
+            link={item}
+            error={errors?.links?.[index]?.url.message}
+            remove={remove}
+          />
+        ))}
       </form>
     </>
   );
