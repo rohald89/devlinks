@@ -1,31 +1,16 @@
-import { getAuthSession } from '@/lib/auth';
-import { db } from '@/lib/db';
 import Image from 'next/image';
 import { FC } from 'react';
 import { utapi } from 'uploadthing/server';
 import LinkCard from './LinkCard';
+import { Link, User } from '@prisma/client';
 
-interface PreviewCardProps {}
+interface PreviewCardProps {
+  user: User & { links: Link[]; profile: any };
+}
 
-const PreviewCard: FC<PreviewCardProps> = async ({}) => {
-  const session = await getAuthSession();
-
-  const user = await db.user.findUnique({
-    where: {
-      id: session?.user.id,
-    },
-    include: {
-      links: {
-        orderBy: {
-          order: 'asc',
-        },
-      },
-      profile: true,
-    },
-  });
-
+const PreviewCard: FC<PreviewCardProps> = async ({ user }) => {
   let profileImage = null;
-  if (user?.profile?.picture) {
+  if (user.profile.picture) {
     profileImage = await utapi.getFileUrls(user?.profile?.picture);
   }
 

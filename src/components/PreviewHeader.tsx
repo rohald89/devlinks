@@ -3,11 +3,16 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { Button, buttonVariants } from './ui/Button';
 
-interface PreviewHeaderProps {}
+interface PreviewHeaderProps {
+  userId: string;
+}
 
-const PreviewHeader: FC<PreviewHeaderProps> = ({}) => {
+const PreviewHeader: FC<PreviewHeaderProps> = ({ userId }) => {
   const copyToClipboard = async () => {
-    const url = window.location.href;
+    const url = window.location.href.replace('/preview', `/${userId}`);
+    console.log(url);
+    // copy the URL to the clipboard
+
     await navigator.clipboard.writeText(url);
   };
   return (
