@@ -65,8 +65,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
     },
     onSuccess: () => {
       toast({
-        title: 'Profile updated',
-        description: 'Your profile has been updated successfully.',
+        description: 'Your changes have been successfully saved!',
       });
       router.refresh();
     },

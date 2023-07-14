@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import { Button, buttonVariants } from './ui/Button';
+import { toast } from '@/hooks/use-toast';
 
 interface PreviewHeaderProps {
   userId: string;
@@ -14,6 +15,9 @@ const PreviewHeader: FC<PreviewHeaderProps> = ({ userId }) => {
     // copy the URL to the clipboard
 
     await navigator.clipboard.writeText(url);
+    toast({
+      title: 'The link has been copied to your clipboard!',
+    });
   };
   return (
     <header className="fixed inset-x-0 z-20 md:mx-6 bg-white rounded-b-xl p-4 flex items-center justify-between rounded-xl">
