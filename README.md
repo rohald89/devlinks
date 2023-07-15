@@ -28,6 +28,10 @@ Your users should be able to:
 - See hover and focus states for all interactive elements on the page
 - **Bonus**: Save details to a database (build the project as a full-stack app)
 - **Bonus**: Create an account and log in (add user authentication to the full-stack app)
+- **Bonus**: Add Google Oath
+- **Bonus**: Add Bio to Profiles
+- **Bonus**: Give user ability to personalize the color of their profile and dashboard
+- **Bonus**: Add functionality to add custom links
 
 Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
 
