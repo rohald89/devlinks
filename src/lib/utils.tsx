@@ -174,7 +174,7 @@ export function getPlatform(
         />
       ),
       name: 'Treehouse',
-      color: '#000',
+      color: '#52C86D',
     },
   };
 

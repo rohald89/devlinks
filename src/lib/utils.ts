@@ -87,7 +87,7 @@ export function getPlatform(platform: PlatformType) {
     TREEHOUSE: {
       icon: <PlatformIcons.treehouse />,
       name: 'Treehouse',
-      color: '#000',
+      color: '#52C86D',
     },
   };
 
