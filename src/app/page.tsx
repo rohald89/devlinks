@@ -2,6 +2,9 @@ import { LoginButton, LogoutButton } from '@/components/Auth';
 import ClientSession from '@/components/ClientSession';
 import { getAuthSession } from '@/lib/auth';
 
+import { Icons } from '@/components/Icons';
+import Hero from '@/components/Hero';
+
 export default async function Home() {
   const session = await getAuthSession();
 
@@ -11,6 +14,7 @@ export default async function Home() {
         One day, I will be a beautiful landing page 🚀
       </h1>
 
+      <Hero />
       <LoginButton />
       <LogoutButton />
       <h2>Server Session</h2>
