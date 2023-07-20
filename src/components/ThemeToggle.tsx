@@ -1,12 +1,19 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 interface ThemeToggleProps {}
 
 const ThemeToggle: FC<ThemeToggleProps> = ({}) => {
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   return (
     <div>
       <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>

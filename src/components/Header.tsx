@@ -8,13 +8,17 @@ interface HeaderProps {}
 
 const Header: FC<HeaderProps> = ({}) => {
   return (
-    <header className="bg-white rounded-b-xl p-4 flex items-center justify-between md:m-6 rounded-xl">
+    <header className="bg-white dark:bg-slate-900 rounded-b-xl p-4 flex items-center justify-between md:m-6 md:rounded-xl">
       {/* TODO find cleaner way for mobile / desktop differences */}
       <span className="md:hidden">
         <Icons.smallLogo />
       </span>
       <span className="hidden md:block">
-        <Icons.logo width={136} height={32} />
+        <Icons.logo
+          width={136}
+          height={32}
+          className="text-gray-900 dark:text-slate-100"
+        />
       </span>
       <TabsList>
         <TabsTrigger value="links" asChild>
