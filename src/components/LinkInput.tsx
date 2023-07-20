@@ -29,7 +29,7 @@ const LinkInput: FC<LinkInputProps> = ({
   control,
 }) => {
   return (
-    <div className="p-5 rounded-xl bg-background text-gray-500">
+    <div className="p-5 rounded-xl bg-background dark:bg-slate-800 text-gray-500 dark:text-slate-200">
       <div className="flex items-center gap-2 ">
         <Icons.drag />
         <h2 className="flex-1 text-heading-sm">Link #{index + 1}</h2>

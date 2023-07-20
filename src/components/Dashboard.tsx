@@ -31,22 +31,21 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
     profileImage = await utapi.getFileUrls(profile?.picture);
   }
   return (
-    <div className="m-6 flex gap-6">
+    <div className="m-6 flex gap-6 ">
       {/* Mockup preview on Desktop */}
       <Mockup />
 
       {/* Link TabContent */}
       <TabsContent value="links">
-        <div className="border-b border-gray-300 p-6">
-          <h1 className="text-2xl font-bold md:text-heading-md">
+        <div className="border-b border-gray-300 dark:border-slate-700 p-6">
+          <h1 className="text-2xl font-bold md:text-heading-md dark:text-slate-100">
             Customize your links
           </h1>
-          <p className="mt-2 text-body-md text-gray-500">
+          <p className="mt-2 text-body-md text-gray-500 dark:text-slate-300">
             Add/edit/remove links below and then share all your profiles with
             the world!
           </p>
           {!links.length && <CreateLink />}
-          {/* LinkContainer */}
           <LinkContainer links={links} />
         </div>
         <div className="p-4">
@@ -58,11 +57,11 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
 
       {/* Profile TabContent */}
       <TabsContent value="profile">
-        <div className="border-b border-gray-300 p-6">
-          <h1 className="text-2xl font-bold md:text-heading-md">
+        <div className="border-b border-gray-300 dark:border-slate-700 p-6">
+          <h1 className="text-2xl font-bold md:text-heading-md dark:text-slate-100">
             Profile Details
           </h1>
-          <p className="mt-2 text-body-md text-gray-500 ">
+          <p className="mt-2 text-body-md text-gray-500 dark:text-slate-300 ">
             Add your details to create a personal touch to your profile.
           </p>
           <ProfileDetails

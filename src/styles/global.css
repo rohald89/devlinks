@@ -12,13 +12,6 @@
   --foreground: 0 0% 98%;
   --background: 0 0% 20%;
 }
-/*
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground: 0 0% 98%;
-    --background: 0 0% 20%;
-  }
-} */
 
 @layer base {
   body {
