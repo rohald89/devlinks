@@ -27,9 +27,9 @@ const Mockup: FC<MockupProps> = async ({}) => {
   }
 
   return (
-    <div className="hidden p-32 rounded-xl xl:flex items-center  justify-center bg-white">
+    <div className="hidden p-32 rounded-xl xl:flex items-center  justify-center bg-white dark:bg-slate-900">
       <div className="w-[307px] h-[631px] relative">
-        <div className="absolute inset-0 z-20 pt-16 flex flex-col items-center">
+        <div className="absolute inset-0 z-20 pt-16 flex flex-col items-center dark:text-slate-200">
           <div className=" w-[96px] h-[96px] rounded-full bg-gray-200 relative">
             {profileImage ? (
               <Image
@@ -48,13 +48,15 @@ const Mockup: FC<MockupProps> = async ({}) => {
               {profile?.firstName} {profile?.lastName}
             </h1>
           ) : (
-            <div className="bg-gray-200 h-4 rounded-lg mt-6 w-40"></div>
+            <div className="bg-gray-200 dark:bg-slate-950 h-4 rounded-lg mt-6 w-40"></div>
           )}
 
           {profile?.email ? (
-            <p className="text-body-sm text-gray-500 mt-2">{profile.email}</p>
+            <p className="text-body-sm text-gray-500 dark:text-slate-400 mt-2">
+              {profile.email}
+            </p>
           ) : (
-            <div className="bg-gray-200 h-2 rounded-lg mt-4 w-[72px]"></div>
+            <div className="bg-gray-200 dark:bg-slate-950 h-2 rounded-lg mt-4 w-[72px]"></div>
           )}
 
           <div className="mt-12 space-y-5 max-h-[300px] overflow-y-scroll">
@@ -66,12 +68,12 @@ const Mockup: FC<MockupProps> = async ({}) => {
               [...Array(5 - links.length)].map((_, i) => (
                 <div
                   key={i}
-                  className="bg-gray-200 h-[40px] rounded-lg mt-4 w-[237px]"
+                  className="bg-gray-200 dark:bg-slate-950 h-[40px] rounded-lg mt-4 w-[237px]"
                 ></div>
               ))}
           </div>
         </div>
-        <div className="absolute inset-0 z-10">
+        <div className="absolute inset-0 z-10 text-white dark:text-slate-900">
           <Icons.mockup />
         </div>
       </div>

@@ -48,7 +48,7 @@ const FileUpload: FC<FileUploadProps> = ({ image }) => {
 
   return (
     <div className="md:flex md:items-center">
-      <p className="text-body-md mb-4 text-gray-500 md:basis-2/5">
+      <p className="text-body-md mb-4 text-gray-500 dark:text-slate-200 md:basis-2/5">
         Profile Picture
       </p>
       <div className="basis-3/5 md:flex md:items-center">
@@ -70,7 +70,7 @@ const FileUpload: FC<FileUploadProps> = ({ image }) => {
             <Icons.image />+ Upload Image
           </div>
         </div>
-        <p className="text-body-sm text-gray-500 mt-6 md:mt-0 md:ml-6">
+        <p className="text-body-sm text-gray-500 dark:text-slate-200 mt-6 md:mt-0 md:ml-6">
           Image must be below 1024x1024px. Use PNG or JPG format.
         </p>
       </div>

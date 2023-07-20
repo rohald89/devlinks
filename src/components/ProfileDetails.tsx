@@ -78,7 +78,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
         editProfile(e);
       })}
     >
-      <div className="mt-10 p-5 rounded-xl bg-background ">
+      <div className="mt-10 p-5 rounded-xl bg-background dark:bg-slate-800">
         <FileUpload image={image} />
         <div className="md:flex items-center mt-6">
           <Label htmlFor="firstName" className="md:basis-2/5">
@@ -93,7 +93,7 @@ const ProfileDetails: FC<ProfileDetailsProps> = ({ profile, image }) => {
         </div>
       </div>
 
-      <div className="mt-6 p-5 rounded-xl bg-background">
+      <div className="mt-6 p-5 rounded-xl bg-background dark:bg-slate-800">
         <div className="md:flex items-center">
           <Label htmlFor="firstName" className="md:basis-2/5">
             First name*
