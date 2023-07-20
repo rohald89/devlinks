@@ -7,8 +7,12 @@
   --background: 0 0% 98%;
   --primary: 252 100% 62%;
 }
+
+.dark {
+  --foreground: 0 0% 98%;
+  --background: 0 0% 20%;
+}
 /*
-TODO: Add dark mode at some point
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground: 0 0% 98%;
