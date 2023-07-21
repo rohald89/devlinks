@@ -11,7 +11,6 @@ export async function middleware(req: NextRequest) {
         ? '__Secure-next-auth.session-token'
         : 'next-auth.session-token',
   });
-  console.log(token);
 
   if (!token) {
     return NextResponse.redirect(new URL('/signin', req.nextUrl));
@@ -20,5 +19,5 @@ export async function middleware(req: NextRequest) {
 
 // Paths that require authentication
 export const config = {
-  matcher: ['/dashboard'],
+  matcher: ['/dashboard', '/preview'],
 };
