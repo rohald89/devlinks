@@ -21,7 +21,6 @@ function getIconsFromName(iconName: Icons) {
       return () => <Icons.link />;
   }
 }
-getIconsFromName.displayName = 'Icon';
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, icon, error, ...props }, ref) => {
