@@ -56,6 +56,7 @@ export const authOptions: NextAuthOptions = {
     },
     jwt: ({ token, user }) => {
       //   add user id to the token
+      console.log(token);
       if (user) return { ...token, id: user.id };
       return token;
     },
