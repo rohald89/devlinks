@@ -38,7 +38,7 @@ const SignIn: FC<SignInProps> = ({}) => {
       onSubmit={handleSubmit((e) => {
         onSubmit(e);
       })}
-      className="bg-white rounded-xl w-full max-w-lg md:p-10"
+      className="bg-white dark:bg-slate-900 rounded-xl w-full max-w-lg md:p-10"
     >
       <h1 className="text-2xl mb-2 font-bold md:text-heading-md">Login</h1>
       <p className="text-body-md mb-10 text-gray-500">

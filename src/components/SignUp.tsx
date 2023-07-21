@@ -66,15 +66,15 @@ const SignUp: FC<SignUpProps> = ({}) => {
   });
   return (
     <form
-      className="bg-white rounded-xl w-full max-w-lg md:p-10"
+      className="bg-white dark:bg-slate-900 rounded-xl w-full max-w-lg md:p-10"
       onSubmit={handleSubmit((e) => {
         createUser(e);
       })}
     >
-      <h1 className="text-2xl mb-2 font-bold md:text-heading-md">
+      <h1 className="text-2xl mb-2 font-bold md:text-heading-md dark:text-slate-100">
         Create account
       </h1>
-      <p className="text-body-md mb-10 text-gray-500">
+      <p className="text-body-md mb-10 text-gray-500 dark:text-slate-400">
         Let's get you started sharing your links!
       </p>
 
@@ -118,7 +118,7 @@ const SignUp: FC<SignUpProps> = ({}) => {
           {errors.confirmPassword.message}
         </p>
       )}
-      <p className="text-body-sm mb-6 text-gray-500">
+      <p className="text-body-sm mb-6 text-gray-500 dark:text-slate-400">
         Password must contain at least 8 characters
       </p>
       <Button
@@ -130,7 +130,7 @@ const SignUp: FC<SignUpProps> = ({}) => {
         Create new account
       </Button>
 
-      <p className="text-center text-gray-500 mt-6 flex flex-col xl:flex-row xl:gap-1 xl:justify-center">
+      <p className="text-center text-gray-500 dark:text-slate-300 mt-6 flex flex-col xl:flex-row xl:gap-1 xl:justify-center">
         Already have an account?
         <span className="text-primary-600">
           <Link href="/signin" className="text-center">
