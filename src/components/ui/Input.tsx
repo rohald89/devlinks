@@ -11,7 +11,7 @@ export interface InputProps
   error?: string;
 }
 
-const getIconsFromName = (iconName: Icons) => {
+function getIconsFromName(iconName: Icons) {
   switch (iconName) {
     case 'mail':
       return () => <Icons.mail />;
@@ -20,7 +20,7 @@ const getIconsFromName = (iconName: Icons) => {
     case 'link':
       return () => <Icons.link />;
   }
-};
+}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, icon, error, ...props }, ref) => {
