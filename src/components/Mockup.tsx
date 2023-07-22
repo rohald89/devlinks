@@ -30,7 +30,7 @@ const Mockup: FC<MockupProps> = async ({}) => {
     <div className="hidden p-32 rounded-xl xl:flex items-center  justify-center bg-white dark:bg-slate-900">
       <div className="w-[307px] h-[631px] relative">
         <div className="absolute inset-0 z-20 pt-16 flex flex-col items-center dark:text-slate-200">
-          <div className=" w-[96px] h-[96px] rounded-full bg-gray-200 relative">
+          <div className=" w-[96px] h-[96px] rounded-full bg-gray-200 dark:bg-gray-950 relative">
             {profileImage ? (
               <Image
                 src={profileImage[0].url}
