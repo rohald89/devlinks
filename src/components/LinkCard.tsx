@@ -198,7 +198,7 @@ const LinkCard: FC<LinkCardProps> = ({ link, size = 'md' }) => {
       <p
         className={cn(
           size === 'sm' ? 'text-body-sm' : 'text-body-md',
-          'flex-1'
+          'flex-1 capitalize'
         )}
       >
         {platform.name}

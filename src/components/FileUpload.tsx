@@ -56,14 +56,14 @@ const FileUpload: FC<FileUploadProps> = ({ image }) => {
           style={{ '--image-url': `url(${profileImage})` }}
           className={cn(
             !!profileImage ? 'text-white' : 'text-primary-600',
-            'bg-[image:var(--image-url)] bg-cover rounded-xl'
+            'bg-[image:var(--image-url)] bg-cover rounded-xl md:min-w-[200px] w-[200px]'
           )}
         >
           <div
             {...getRootProps()}
             className={cn(
               !!profileImage ? 'backdrop-brightness-50' : 'bg-primary-100 ',
-              'cursor-pointer text-heading-sm  px-10 py-16 rounded-xl flex flex-col items-center gap-2 justify-center aspect-square md:min-w-[200px] w-[200px]'
+              'cursor-pointer text-heading-sm  px-10 py-16 rounded-xl flex flex-col items-center gap-2 justify-center aspect-square '
             )}
           >
             <input {...getInputProps()} />
