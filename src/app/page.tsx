@@ -9,10 +9,9 @@ import { Icons } from '@/components/Icons';
 
 export default async function Home() {
   const session = await getAuthSession();
-
   return (
-    <div className="relative bg-slate-900 md:pt-6">
-      <header className="fixed z-10 w-full md:w-11/12 md:left-1/2 md:-translate-x-1/2 bg-white dark:bg-slate-950 rounded-b-xl p-4 flex items-center justify-between md:rounded-xl">
+    <div className="relative bg-gray-100 dark:bg-slate-900">
+      <header className="fixed md:top-6 shadow-card z-10 w-full md:w-11/12 md:left-1/2 md:-translate-x-1/2 bg-white dark:bg-slate-950 rounded-b-xl p-4 flex items-center justify-between md:rounded-xl">
         {/* TODO find cleaner way for mobile / desktop differences */}
         <span className="md:hidden">
           <Icons.smallLogo />
