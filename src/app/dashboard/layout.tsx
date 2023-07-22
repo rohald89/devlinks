@@ -10,5 +10,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <Tabs defaultValue="links">{children}</Tabs>;
+  return (
+    <Tabs defaultValue="links" className="h-screen p-6">
+      {children}
+    </Tabs>
+  );
 }

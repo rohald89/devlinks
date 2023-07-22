@@ -8,7 +8,7 @@ interface HeaderProps {}
 
 const Header: FC<HeaderProps> = ({}) => {
   return (
-    <header className="bg-white dark:bg-slate-900 rounded-b-xl p-4 flex items-center justify-between md:m-6 md:rounded-xl">
+    <header className="bg-white dark:bg-slate-900 rounded-b-xl p-4 flex items-center justify-between md:rounded-xl">
       {/* TODO find cleaner way for mobile / desktop differences */}
       <span className="md:hidden">
         <Icons.smallLogo />

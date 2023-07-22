@@ -18,7 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(font.className, 'bg-gray-100 dark:bg-slate-950')}>
+      <body
+        className={cn(
+          font.className,
+          'bg-gray-100 dark:bg-slate-950 min-h-screen'
+        )}
+      >
         <Providers>
           {children}
 

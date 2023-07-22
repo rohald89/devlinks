@@ -31,27 +31,30 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
     profileImage = await utapi.getFileUrls(profile?.picture);
   }
   return (
-    <div className="m-6 flex gap-6">
+    <div className="flex gap-6 flex-1">
       {/* Mockup preview on Desktop */}
       <Mockup />
 
       {/* Link TabContent */}
+      {/* <div className="h-full"> */}
       <TabsContent value="links">
-        <div className="border-b border-gray-300 dark:border-slate-700 p-6">
-          <h1 className="text-2xl font-bold md:text-heading-md dark:text-slate-100">
-            Customize your links
-          </h1>
-          <p className="mt-2 text-body-md text-gray-500 dark:text-slate-300">
-            Add/edit/remove links below and then share all your profiles with
-            the world!
-          </p>
-          {!links.length && <CreateLink />}
-          <LinkContainer links={links} />
-        </div>
-        <div className="p-4">
-          <Button className="w-full" type="submit" form="editLinks">
-            Save
-          </Button>
+        <div className="h-full flex flex-col">
+          <div className="flex-1 border-b border-gray-300 dark:border-slate-700 p-6">
+            <h1 className="text-2xl font-bold md:text-heading-md dark:text-slate-100">
+              Customize your links
+            </h1>
+            <p className="mt-2 text-body-md text-gray-500 dark:text-slate-300">
+              Add/edit/remove links below and then share all your profiles with
+              the world!
+            </p>
+            {/* {!links.length && <CreateLink />} */}
+            <LinkContainer links={links} />
+          </div>
+          <div className="p-4">
+            <Button className="w-full" type="submit" form="editLinks">
+              Save
+            </Button>
+          </div>
         </div>
       </TabsContent>
 
@@ -76,6 +79,7 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
         </div>
       </TabsContent>
     </div>
+    // </div>
   );
 };
 
