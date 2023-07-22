@@ -10,7 +10,7 @@ export default async function Page() {
   //     redirect('/signin');
   //   }
   return (
-    <div>
+    <div className="max-w-7xl mx-auto">
       <Header />
       <Dashboard />
     </div>

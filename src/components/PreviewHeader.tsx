@@ -20,7 +20,7 @@ const PreviewHeader: FC<PreviewHeaderProps> = ({ userId }) => {
     });
   };
   return (
-    <header className="fixed inset-x-0 z-20 md:mx-6 bg-white dark:bg-slate-900 rounded-b-xl p-4 flex items-center justify-between md:rounded-xl">
+    <header className="fixed inset-x-0 z-20 md:top-6 md:w-11/12 md:max-w-6xl mx-auto bg-white dark:bg-slate-900 rounded-b-xl p-4 flex items-center justify-between md:rounded-xl">
       <Link
         href="/dashboard"
         className={buttonVariants({

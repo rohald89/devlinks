@@ -31,7 +31,7 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
     profileImage = await utapi.getFileUrls(profile?.picture);
   }
   return (
-    <div className="m-6 flex gap-6 ">
+    <div className="m-6 flex gap-6">
       {/* Mockup preview on Desktop */}
       <Mockup />
 

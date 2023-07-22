@@ -20,7 +20,7 @@ export default async function PreviewPage() {
   });
 
   return (
-    <div className="relative md:p-6 bg-white dark:bg-slate-900 md:dark:bg-slate-950 md:bg-gray-100 min-h-screen">
+    <div className="relative md:p-6 bg-white dark:bg-slate-900 md:dark:bg-slate-950 md:bg-gray-100 min-h-screen max-w-7xl mx-auto">
       <PreviewBackground />
       <PreviewHeader userId={session.user.id} />
       <PreviewCard user={user} />
