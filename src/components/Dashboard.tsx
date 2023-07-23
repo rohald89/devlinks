@@ -31,14 +31,14 @@ const Dashboard: FC<DashboardProps> = async ({}) => {
     profileImage = await utapi.getFileUrls(profile?.picture);
   }
   return (
-    <div className="flex gap-6 flex-1">
+    <div className="flex gap-6">
       {/* Mockup preview on Desktop */}
       <Mockup />
 
       {/* Link TabContent */}
       {/* <div className="h-full"> */}
       <TabsContent value="links">
-        <div className="h-full flex flex-col">
+        <div className="flex flex-col">
           <div className="flex-1 border-b border-gray-300 dark:border-slate-700 p-6">
             <h1 className="text-2xl font-bold md:text-heading-md dark:text-slate-100">
               Customize your links
